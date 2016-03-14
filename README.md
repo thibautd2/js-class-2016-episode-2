@@ -1,4 +1,4 @@
-# js-class-2016
+# JS class 2016 - episode 2
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
 [![Build Status](https://travis-ci.org/EpitaJS/js-class-2016.svg?branch=master)](https://travis-ci.org/EpitaJS/js-class-2016)
@@ -19,20 +19,18 @@ Program :
 
 
 ## Usage
-Node 4+ needed
+Node 5+ needed
 
 ```bash
+nvm install 5
 npm install
-npm start
+npm start                      <-- Linux
 .\node_modules\.bin\puer.cmd   <-- Windows
 ```
 
 
 ## TODO
-* [x] REWORK TESTS
-* [x] set Travis integration
-  * [x] browser with karma + phantom + jspm
-  * [ ] node
+* [ ] node
 * [ ] Build an app skeleton for project
 
 
