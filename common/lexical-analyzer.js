@@ -23,6 +23,10 @@ export function tokenize(str) {
  * @return {String}
  */
 export function stem(str) {
+  str = str.toLowerCase();
+  if (str.slice(-1) === 's')
+    str = str.slice(0, str.length - 1);
+
   return str.toLowerCase();
 }
 
