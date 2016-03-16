@@ -2,8 +2,6 @@
 
 var _ = require('lodash');
 
-// XXX TOSORT : also in rapport !!!
-
 
 module.exports = {
 

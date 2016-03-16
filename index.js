@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 'use strict';
 
-/**
+/** ROOT OF A JS Fullstack app
+ *
  * Server wrapper with optional cluster launch.
  * https://discussion.heroku.com/t/recommended-use-of-nodes-cluster-module/96
  */
@@ -20,7 +21,7 @@ if(env === 'production') {
   forky.log = function() { console.log.apply(console, arguments); };
 
   var forky_options = {
-    path: __dirname + '/server/web/index',
+    path: __dirname + '/build/server/web/index',
     enable_logging: true,
     workers: 3 // TODO config. Heroku = 8 so complains about memory
   };
@@ -29,5 +30,5 @@ if(env === 'production') {
 else {
   // normal, plain launch (one instance)
   console.log('* [cluster master] SIMPLE launch...');
-  require('./server/web/index');
+  require('./build/server/web/index');
 }
