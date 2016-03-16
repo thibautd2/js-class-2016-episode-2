@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 
-console.log(`------- code outside of the loop -------`);
+console.error(`------- code outside of the loop -------`);
 
 // to work, the following code MUST be called before anything else
 let eventLoopCount = 0;
@@ -15,17 +15,17 @@ function eventLoopDetector() {
   else {
     // we are in the loop
     if (eventLoopCount === 1)
-      console.log(`
+      console.error(`
 ------- the event loop starts ! -------`);
     else
-      console.log(`
+      console.error(`
 ------- event loop #${eventLoopCount} -------`);
-    console.log('--- 1) timeouts / intervals :');
+    console.error('--- 1) timeouts / intervals :');
   }
 
   if (eventLoopCount !== 1) {
-    fs.stat('foo', () => console.log('--- 2) I/O callbacks :'));
-    setImmediate(() => console.log('--- 3) immediates :'));
+    fs.stat('foo', () => console.error('--- 2) I/O callbacks :'));
+    setImmediate(() => console.error('--- 3) immediates :'));
   }
 
   eventLoopCount++;
@@ -38,35 +38,11 @@ setUpDelayed('->'); // direct
 
 
 
-let setImmediateCount = 0;
-function setImmediateDetector() {
-  if (setImmediateCount > 0) {
-    console.log(`- setImmediate #${setImmediateCount}`);
-  }
-  setImmediateCount++;
-  if (setImmediateCount < 10) {
-    setImmediate(setImmediateDetector);
-    //process.nextTick(() => setImmediate(() => console.log('nextTicked setImmediate')));
-  }
-}
-setImmediate(setImmediateDetector);
-
-let setTimeoutCount = 0;
-function setTimeoutDetector() {
-  if (setTimeoutCount > 0) {
-    console.log(`- setTimeout #${setTimeoutCount}`);
-    //setUpDelayed(`setTimeout #${setTimeoutCount}`);
-  }
-  setTimeoutCount++;
-  if (setTimeoutCount < 10)
-    setTimeout(setTimeoutDetector);
-}
-setTimeout(setTimeoutDetector);
 
 let setNextTickCount = 0;
 function setNextTickDetector() {
   if (setNextTickCount > 0) {
-    console.log(`- setNextTick #${setNextTickCount}`);
+    console.error(`- setNextTick #${setNextTickCount}`);
   }
   setNextTickCount++;
   if (setNextTickCount < 10)
@@ -74,11 +50,36 @@ function setNextTickDetector() {
 }
 process.nextTick(setNextTickDetector);
 
+
+let setImmediateCount = 0;
+function setImmediateDetector() {
+  if (setImmediateCount > 0) {
+    console.error(`- setImmediate #${setImmediateCount}`);
+  }
+  setImmediateCount++;
+  if (setImmediateCount < 10) {
+    setImmediate(setImmediateDetector);
+    //process.nextTick(() => setImmediate(() => console.error('nextTicked setImmediate')));
+  }
+}
+setImmediate(setImmediateDetector);
+
+
+
+let setTimeoutCount = 0;
+function setTimeoutDetector() {
+  setTimeoutCount++;
+  console.error(`- setTimeout #${setTimeoutCount}`);
+  if (setTimeoutCount < 10)
+    setTimeout(setTimeoutDetector);
+}
+setTimeout(setTimeoutDetector);
+
 let intervalObject;
 let setIntervalCount = 0;
 function setIntervalDetector() {
   setIntervalCount++;
-  console.log(`- setInterval #${setIntervalCount}`);
+  console.error(`- setInterval #${setIntervalCount}`);
   if (setIntervalCount >= 10)
     clearInterval(intervalObject);
 }
@@ -86,14 +87,14 @@ intervalObject = setInterval(setIntervalDetector);
 
 
 function setUpDelayed(id) {
-  console.log(id, 'scheduling setImmediate...');
-  setImmediate(() => console.log(id, 'setImmediate !'));
+  console.error(id, 'scheduling setImmediate...');
+  setImmediate(() => console.error(id, 'setImmediate !'));
 
-  console.log(id, 'scheduling setTimeout...');
-  setTimeout(() => console.log(id, 'setTimeout !'));
+  console.error(id, 'scheduling setTimeout...');
+  setTimeout(() => console.error(id, 'setTimeout !'));
 
-  console.log(id, 'scheduling process.nextTick...');
-  process.nextTick(() => console.log(id, 'process.nextTick !'));
+  console.error(id, 'scheduling process.nextTick...');
+  process.nextTick(() => console.error(id, 'process.nextTick !'));
 }
 
 
