@@ -123,8 +123,8 @@
     }
   },
   "pre-commit": [
-    'build',
-    'lint'
+    "lint",
+    "build"
   ],
   "commented": {
     "karma-phantomjs-launcher": "0.2.3",

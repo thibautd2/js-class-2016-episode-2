@@ -1,7 +1,7 @@
 
 import _ from 'lodash';
 import express from 'express';
-import {get_local_ips as getLocalIps} from '../common/local-ips';
+import {getLocalIps} from '../common/local-ips';
 
 // http://expressjs.com/4x/api.html
 const app = express();
