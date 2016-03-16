@@ -33,7 +33,7 @@
 
     "build": "babel common --source-maps true --out-dir build/common && babel server --source-maps true --out-dir build/server",
     "buildx": "babel . --only 'common/**/*.js,server/common/**/*.js' --source-maps true --out-dir build",
-    "buildy": "babel common server --out-dir build",
+    "buildy": "babel src --out-dir build",
 
     "test:client": "karma start browser/lessons/--karma/karma.conf.js --single-run --browsers PhantomJS",
     "ks": "karma start browser/lessons/--karma/karma.conf.js --auto-watch",
