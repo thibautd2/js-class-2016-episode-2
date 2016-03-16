@@ -24,11 +24,17 @@
   },
   "scripts": {
     "full-install": "npm run npm-install-globals && npm install && npm run jspm-install",
+
     "puer": "puer --exclude 'node_modules|jspm_packages'",
+
     "lint": "eslint .",
-    "testy": "babel-node -- ./node_modules/.bin/mocha  --debug --check-leaks --require .mocha.init.js common/**/*.spec.js",
-    "testx": "babel-node -r node_modules/.bin/_mocha $npm_package_config_MOCHA_OPTS",
+
     "test": "mocha --compilers js:babel-core/register --require babel-preset-es2015-node5 $npm_package_config_MOCHA_OPTS",
+
+    "build": "babel common --source-maps true --out-dir build/common && babel server --source-maps true --out-dir build/server",
+    "buildx": "babel . --only 'common/**/*.js,server/common/**/*.js' --source-maps true --out-dir build",
+    "buildy": "babel common server --out-dir build",
+
     "test:client": "karma start browser/lessons/--karma/karma.conf.js --single-run --browsers PhantomJS",
     "ks": "karma start browser/lessons/--karma/karma.conf.js --auto-watch",
     "npm-install-dev": "npm prune && npm install && npm update",
@@ -49,6 +55,7 @@
     "cors": "^2.7.1",
     "dustjs-linkedin": "^2.7.2",
     "express": "^4.13.4",
+    "forky": "0.3.0",
     "fs-extra": "^0.26.5",
     "lodash": "^4.6.1",
     "moment": "^2.12.0",

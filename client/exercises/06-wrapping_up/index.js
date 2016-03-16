@@ -5,10 +5,10 @@ import _ from 'lodash';
 import $ from 'jquery';
 
 import * as LexicalAnalyser from '../../../common/lexical-analyzer';
-import { create as createLogger } from '../../../common/logger';
+//import { create as createLogger } from '../../../common/logger';
+import logger from '../../../common/logger';
 
-
-const logger = createLogger('EXO6');
+//const logger = createLogger('EXO6');
 logger.log('I’m up !');
 
 

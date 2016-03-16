@@ -3,22 +3,17 @@ import _ from 'lodash';
 function createFancyLogger(id) {
   id = (id || 'default').toUpperCase();
 
-  function logBetter(level) {
-    // TODO implement !
-
-    const originalArgs = Array.from(arguments);
-    let newArgs = originalArgs.slice(1);
-
+  function logBetter(level, ...args) {
     let prefix = `${getTimestamp()} - ${id} - `;
 
-    if (_.isString(newArgs[0]))
-      newArgs[0] = prefix + newArgs[0];
+    // handle
+    if (_.isString(args[0]))
+      args[0] = prefix + args[0];
     else
-      newArgs.unshift(prefix);
+      args.unshift(prefix);
 
-    console[level].apply(console, newArgs);
+    console[level].apply(console, args);
   }
-
 
   /* eslint-disable no-undefined */
   return {
@@ -28,7 +23,6 @@ function createFancyLogger(id) {
     error: logBetter.bind(undefined, 'error'),
   };
 }
-
 
 
 /** Convert a Javascript date to yyy/mm/dd hh:mm:ss.ms
