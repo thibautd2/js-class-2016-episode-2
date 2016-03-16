@@ -20,13 +20,13 @@
     "node": "^5.8.0"
   },
   "config": {
-    "MOCHA_OPTS": "--debug --check-leaks --require .mocha.init.js --recursive common/**/*.spec.js"
+    "MOCHA_OPTS": "--debug --check-leaks --require .mocha.init.js --recursive build/**/*.spec.js"
   },
   "scripts": {
     "start": "node index.js",
     "puer": "puer --exclude 'node_modules|jspm_packages'",
     "lint": "eslint .",
-    "test": "mocha --compilers js:babel-core/register --require babel-preset-es2015-node5 $npm_package_config_MOCHA_OPTS",
+    "test": "mocha $npm_package_config_MOCHA_OPTS",
     "build": "babel src --out-dir build",
     "test:client": "karma start browser/lessons/--karma/karma.conf.js --single-run --browsers PhantomJS",
     "ks": "karma start browser/lessons/--karma/karma.conf.js --auto-watch",
