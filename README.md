@@ -1,7 +1,7 @@
 # JS class 2016 - episode 2
 
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](http://github.com/badges/stability-badges)
-[![Build Status](https://travis-ci.org/EpitaJS/js-class-2016.svg?branch=master)](https://travis-ci.org/EpitaJS/js-class-2016)
+[![Build Status](https://travis-ci.org/EpitaJS/js-class-2016-episode-2.svg?branch=master)](https://travis-ci.org/EpitaJS/js-class-2016-episode-2)
 
 ## Introduction
 This is a JS class, aimed at high-level students.
