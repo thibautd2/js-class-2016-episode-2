@@ -16,7 +16,6 @@
 <div class="container">
   <h3>Javascript class 2016 - Exercise 6</h3>
   <h1>Live indexer</h1>
-  <li><a>http://getbootstrap.com/</a></li>
 
   <hr />
   <form>
@@ -41,7 +40,7 @@
 
 <script>
   // auto-set page titles
-  document.title = document.querySelector('h1').textContent = 'Demo - ' + document.querySelector('h1').textContent;
+  document.title = document.querySelector('h3').textContent;
   // ease creation of links
   Array.prototype.forEach.call(document.querySelectorAll('a'), function(el) {
     el.href || (el.href = el.text);

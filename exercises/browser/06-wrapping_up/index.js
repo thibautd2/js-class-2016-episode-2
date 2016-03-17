@@ -4,21 +4,19 @@ import 'bootstrap/css/bootstrap.css!'
 import _ from 'lodash';
 import $ from 'jquery';
 
-import * as LexicalAnalyser from '../../../common/lexical-analyzer';
-//import { create as createLogger } from '../../../common/logger';
-import logger from '../../../common/logger';
+import * as LexicalAnalyser from '../../../src/common/lexical-analyzer';
+import { create as createLogger } from '../../../src/common/logger';
 
-//const logger = createLogger('EXO6');
+const logger = createLogger('EXO6');
 logger.log('I’m up !');
 
-
-let debounceUpdate = _.debounce(updateResults, 500);
+let debouncedUpdate = _.debounce(updateResults, 500);
+let textareaElement;
 
 window.onChange = function () {
-  debounceUpdate();
+  debouncedUpdate();
 };
 
-let textareaElement;
 function updateResults() {
   textareaElement = textareaElement || $('#inputText');
 
@@ -31,19 +29,14 @@ function updateResults() {
 
   const sortedResults = sortableResults.sort((val1, val2) => (val1.occurrenceCount < val2.occurrenceCount));
 
-  let elements = sortedResults.map(entry => `<tr><td>${entry.token}</td><td>${entry.occurrenceCount}</td></tr>`);
+  let elements = sortedResults.map(entry => `
+    <tr>
+      <td>${entry.token}</td>
+      <td>${entry.occurrenceCount}</td>
+    </tr>`);
 
   $('#results tbody').empty();
   $('#results tbody:last-child').append( elements );
 }
 
 updateResults(); // initial call
-
-
-/** Hints
-
- Object.keys(index)  -> [ array of keys of an object ]
-
- <array>.sort((val1, val2) => comparison)
-
- */

@@ -1,6 +1,7 @@
 {
   "presets": ["es2015-node5"],
   only: [
+    "demos/nodejs/fw_es6_002_node5_babel-node",
     "common/**/*.js",
     "server/**/*.js"
   ],

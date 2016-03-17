@@ -1,1 +1,0 @@
-module.exports = require("npm:cytoscape@2.6.5/dist/cytoscape.js");

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="shortcut icon" href="../common/assets/favicons/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+
+  </style>
+
+
+  <script src="../../../jspm_packages/system.js"></script>
+  <script src="../../../config.js"></script>
+  <script>
+    window.define = System.amdDefine;
+    window.require = window.requirejs = System.amdRequire;
+    require([
+      'lodash',
+      'jquery',
+      'bootstrap',
+      'bootstrap/css/bootstrap.css!'
+    ],
+    function(_, $) {
+      console.log('hello, Javascript world !', _.VERSION);
+      document.title = 'Demo - ' + $('h1').text();
+    });
+  </script>
+
+</head>
+
+<body>
+  <div class="container">
+    <h1>Bootstrap</h1>
+    <p>Welcome to Javascript !</p>
+
+    <div class="alert alert-success" role="alert">alert-success</div>
+    <div class="alert alert-info" role="alert">alert-info</div>
+    <div class="alert alert-warning" role="alert">alert-warning</div>
+    <div class="alert alert-danger" role="alert">alert-danger</div>
+
+    <table class="table table-condensed table-striped">
+      <thead>
+      <th>x1</th><th>x2</th>
+      </thead>
+      <tr>
+        <td>foo</td><td>bar</td>
+      </tr>
+      <tr>
+        <td>bar</td><td>baz</td>
+      </tr>
+    </table>
+
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: 35%">
+        <span class="sr-only">35% Complete (success)</span>
+      </div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped active" style="width: 20%">
+        <span class="sr-only">20% Complete (warning)</span>
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    For full functionality of this site it is necessary to enable JavaScript.
+    Here are the <a href="http://www.enable-javascript.com/" target="_blank">
+    instructions how to enable JavaScript in your web browser</a>.
+  </noscript>
+</body>
+</html>
