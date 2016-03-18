@@ -24,6 +24,12 @@ router.get('/', (req, res) => {
     #messages li { padding: 5px 10px; }
     #messages li:nth-child(odd) { background: #eee; }
   </style>
+</head>
+<body>
+  <ul id="messages"></ul>
+  <form action="">
+    <input id="m" autocomplete="off" /><button>Send</button>
+  </form>
   <script src="/socket.io/socket.io.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
   <script>
@@ -33,13 +39,10 @@ router.get('/', (req, res) => {
       $('#m').val('');
       return false;
     });
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
+    });
   </script>
-</head>
-
-<ul id="messages"></ul>
-<form action="">
-  <input id="m" autocomplete="off" /><button>Send</button>
-</form>
+</body>
   `);
 });
-
