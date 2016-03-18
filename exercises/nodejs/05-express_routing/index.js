@@ -16,21 +16,25 @@ const listening_port = 3000;
 
 /////////////////////////////////////////////
 
-const api_router = require('./api-router');
+const api_router = require('./api');
 const meta_router = require('../../../src/server/common/meta-routes');
-//const sub_app = require('./sub-app');
 
 /////////////////////////////////////////////
 
 const app = express();
 
+app.use((req, res, next) => {
+  console.log(`Request to $(req.url) received at`, Date.now());
+  res.header('x-received-at', Date.now()); // set a custom header
+  next();
+});
+
 app.get('/', function(req, res) {
-  res.send('hello from app ! Try /meta /api /app');
+  res.send('hello from app ! Try /meta /api');
 });
 
 app.use('/api', api_router);
 app.use('/meta', meta_router);
-//app.use('/app', sub_app);
 
 /////////////////////////////////////////////
 

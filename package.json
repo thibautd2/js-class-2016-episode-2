@@ -28,6 +28,7 @@
     "lint": "eslint .",
     "test": "mocha $npm_package_config_MOCHA_OPTS",
     "build": "babel src --out-dir build",
+    "dev": "babel src --out-dir build --watch 2>&1 & nodemon index.js && fg",
     "test:client": "karma start browser/lessons/--karma/karma.conf.js --single-run --browsers PhantomJS",
     "ks": "karma start browser/lessons/--karma/karma.conf.js --auto-watch",
     "full-install": "npm run npm-install-globals && npm install && npm run jspm-install",
