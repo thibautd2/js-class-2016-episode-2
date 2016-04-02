@@ -29,31 +29,26 @@ prompt.get([{
 
   console.log(`Welcome, ${result.name} !`);
 
-  tryAgain(function() {});
-});
-
-
-function tryAgain(callback) {
-  prompt.get( [{
-    name: 'value',
-    description: chalk.blue.bold('Find the number between 1 and 100'), // Prompt displayed to the user
-    pattern: /^\d{1,3}$/,
-    message: chalk.red('Must be a number between 1 and 100'), // Warning message to display if validation fails.
-    required: true                        // If true, value entered must be non-empty.
-  }], (err, result) => {
-    if (err) return callback(err);
-
-    if (result.value < valueToGuess) {
-      console.log(chalk.red('Too small !'));
-      return callback(null, false);
-    }
-    else if (result.value > valueToGuess) {
-      console.log(chalk.red('Too big !'));
-      return callback(null, false);
-    }
-    else {
-      console.log(chalk.black.bgYellow('You won !'));
-      return callback(null, true);
-    }
+   tryAgain(function callback (err, succed) {
+  if (succded == false)
+     tryAgain(callback);
+   });
   });
-}
+});
+tryAgain(function callback (err, won) {
+      if (err)
+        return console.log(err);
+       else
+       {
+         if (won == false)
+
+           tryAgain(callback);
+       }
+  });
+  });
+  function tryAgain(callback) {
+    prompt.get( [{
+      name: 'value',
+
+
+

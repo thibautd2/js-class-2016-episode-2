@@ -45,8 +45,7 @@ function askUser() {
     ], function (choices) {
       console.log(choices);
 
-      // TODO resolve the promise !!!
-      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+    resolve(choices);
     });
   });
 }
@@ -60,9 +59,18 @@ function fetchData(choices) {
   const spinner = ora('Fetching StarWars API...');
   spinner.start();
 
-  // TODO now use the fetch API :
-  // https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch#Checking_that_the_fetch_was_successful
-  return Promise.reject(new Error('fetchData not implemented !'));
+
+  return   return fetch(url).then(function onResponse(resp) {
+     if (resp.ok == true)
+     {
+       spinner.stop();
+       return response.json();
+     }
+    else
+   {
+      throw Error('Error');
+     }
+   });
 }
 
 function displayResults(data) {
